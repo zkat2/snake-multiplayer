@@ -1,8 +1,16 @@
 # Multiplayer Snake
 
-A multiplayer Snake game built with Python sockets and `pygame`. One server hosts the game state and any number of clients can connect, each controlling their own snake on a shared grid.
+A multiplayer Snake game built with Python sockets and `pygame`. One server hosts the game state and multiple clients can connect at once, each controlling their own snake on a shared grid.
 
 ![Gameplay screenshot](assets/snake_window.jpg)
+
+## Highlights
+
+- **Client-server architecture** — a single authoritative server runs the game loop; clients are "dumb" renderers that send input and draw whatever state they're told
+- **Concurrency** — each client connection runs on its own thread on the server, alongside a separate game-tick thread, and the client itself runs separate threads for receiving state and sending heartbeats
+- **Custom network protocol** — game state, moves, and chat messages are all serialized into a compact string format and parsed back out on each end
+- **RSA key exchange** — server and client generate keypairs and swap public keys on connect, via the `cryptography` library
+- **Tech stack**: Python, `pygame`, `socket`, `threading`, `cryptography`
 
 ## How it works
 
