@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# OS / editor junk
+.DS_Store
+.vscode/
+.idea/
